@@ -51,7 +51,7 @@ class BookResourceControllerUnitTest {
         basicResponse.setSuccess(true);
         basicResponse.setNarrative("New Book with title " + newBookRequest.getTitle() + " has been successfully created");
         given(bookService.createNewBook(any(BookRequest.class))).willReturn(basicResponse);
-        createNewBookRequest(url, newBookRequest, basicResponse, 200);
+        createNewBookRequest(url, newBookRequest, basicResponse);
         verify(bookService, times(1)).createNewBook(any(BookRequest.class));
     }
 
@@ -90,13 +90,12 @@ class BookResourceControllerUnitTest {
     }
 
 
-    private void createNewBookRequest(String url, BookRequest newBookRequest, BasicResponse basicResponse,
-                                      int statusCode) throws Exception {
+    private void createNewBookRequest(String url, BookRequest newBookRequest, BasicResponse basicResponse) throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post(url).accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(objectMapper.writeValueAsString(newBookRequest)))
-                .andExpect(status().is(statusCode))
+                .andExpect(status().is(200))
                 .andExpect(jsonPath("narrative").value(basicResponse.getNarrative()))
                 .andExpect(jsonPath("success").isBoolean())
                 .andExpect(jsonPath("success").value(basicResponse.isSuccess()))
