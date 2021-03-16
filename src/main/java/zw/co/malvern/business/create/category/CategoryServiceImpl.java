@@ -1,4 +1,4 @@
-package zw.co.malvern.business.category;
+package zw.co.malvern.business.create.category;
 
 import zw.co.malvern.domain.Category;
 import zw.co.malvern.repository.CategoryRepository;

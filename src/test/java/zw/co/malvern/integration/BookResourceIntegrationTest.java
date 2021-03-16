@@ -17,6 +17,7 @@ import zw.co.malvern.utils.response.BasicResponse;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static zw.co.malvern.utils.TestData.newBookRequest;
 
+
 @ActiveProfiles("dev")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BookResourceIntegrationTest {

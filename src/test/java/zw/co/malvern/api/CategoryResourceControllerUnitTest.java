@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 import zw.co.malvern.api.create.category.CategoryResource;
-import zw.co.malvern.business.category.CategoryService;
+import zw.co.malvern.business.create.category.CategoryService;
 import zw.co.malvern.utils.exceptions.CategoryException;
 import zw.co.malvern.utils.request.CategoryRequest;
 import zw.co.malvern.utils.response.BasicResponse;

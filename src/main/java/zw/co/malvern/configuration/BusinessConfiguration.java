@@ -4,10 +4,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import zw.co.malvern.business.book.BookService;
-import zw.co.malvern.business.book.BookServiceImpl;
-import zw.co.malvern.business.category.CategoryService;
-import zw.co.malvern.business.category.CategoryServiceImpl;
+import zw.co.malvern.business.create.book.BookService;
+import zw.co.malvern.business.create.book.BookServiceImpl;
+import zw.co.malvern.business.create.category.CategoryService;
+import zw.co.malvern.business.create.category.CategoryServiceImpl;
+import zw.co.malvern.business.retrieve.RetrieveBookService;
+import zw.co.malvern.business.retrieve.RetrieveBookServiceImpl;
 import zw.co.malvern.domain.DomainMarkerInterface;
 import zw.co.malvern.repository.BookRepository;
 import zw.co.malvern.repository.CategoryRepository;
@@ -26,5 +28,11 @@ public class BusinessConfiguration {
     @Bean
     public CategoryService categoryService(final CategoryRepository categoryRepository) {
         return new CategoryServiceImpl(categoryRepository);
+    }
+
+    @Bean
+    public RetrieveBookService retrieveBookService(final BookRepository bookRepository,
+                                                   final CategoryRepository categoryRepository) {
+        return new RetrieveBookServiceImpl(bookRepository, categoryRepository);
     }
 }

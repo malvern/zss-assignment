@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import zw.co.malvern.business.book.BookService;
+import zw.co.malvern.business.create.book.BookService;
 import zw.co.malvern.utils.exceptions.BookException;
 import zw.co.malvern.utils.response.BasicResponse;
 import zw.co.malvern.utils.response.ErrorResponse;

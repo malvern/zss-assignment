@@ -4,6 +4,22 @@ spring:
 ---
 spring:
   profiles: dev
+  datasource:
+    username: postgres
+    password: developer@@
+    url: jdbc:postgresql://localhost:5432/postgres
+    initialization-mode: always
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    generate-ddl: true
+server:
+  port: 9101
+payment:
+  url: https://secure.v.co.zw/interview/api/transaction
+  token: 87c3390b-edcd-4b88-8067-8bbed1418472
 ---
 spring:
   profiles: uat

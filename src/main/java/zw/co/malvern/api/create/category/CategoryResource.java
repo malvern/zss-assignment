@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import zw.co.malvern.business.category.CategoryService;
+import zw.co.malvern.business.create.category.CategoryService;
 import zw.co.malvern.utils.exceptions.CategoryException;
 import zw.co.malvern.utils.request.CategoryRequest;
 import zw.co.malvern.utils.response.BasicResponse;

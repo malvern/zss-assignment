@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 import zw.co.malvern.api.create.book.BookRequest;
 import zw.co.malvern.api.create.book.BookResource;
-import zw.co.malvern.business.book.BookService;
+import zw.co.malvern.business.create.book.BookService;
 import zw.co.malvern.utils.exceptions.BookException;
 import zw.co.malvern.utils.response.BasicResponse;
 import zw.co.malvern.utils.response.ErrorResponse;

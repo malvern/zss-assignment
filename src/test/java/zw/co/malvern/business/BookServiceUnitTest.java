@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import zw.co.malvern.api.create.book.BookRequest;
-import zw.co.malvern.business.book.BookService;
-import zw.co.malvern.business.book.BookServiceImpl;
+import zw.co.malvern.business.create.book.BookService;
+import zw.co.malvern.business.create.book.BookServiceImpl;
 import zw.co.malvern.domain.Book;
 import zw.co.malvern.domain.Category;
 import zw.co.malvern.repository.BookRepository;
@@ -59,7 +59,6 @@ class BookServiceUnitTest {
         assertThat(response).isNotNull();
         assertThat(response.isSuccess()).as("success").isEqualTo(true);
         assertThat(savedBook.getId()).isNull();
-        assertThat(savedBook.getRecordCreationDate()).isNull();
         assertThat(savedBook.getCategoryId()).isNotNull();
         assertThat(savedBook.getPrice()).as("book price").isEqualTo(BigDecimal.valueOf(49.91));
         assertThat(savedBook.getDescription()).as("book description").isEqualTo("Java Certification book");

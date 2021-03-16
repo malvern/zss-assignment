@@ -1,4 +1,4 @@
-package zw.co.malvern.business.book;
+package zw.co.malvern.business.create.book;
 
 import zw.co.malvern.api.create.book.BookRequest;
 import zw.co.malvern.utils.response.BasicResponse;

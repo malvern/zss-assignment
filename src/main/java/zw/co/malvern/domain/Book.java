@@ -3,11 +3,12 @@ package zw.co.malvern.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
+import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
+@Table
 public class Book {
     @Id
     @GeneratedValue
@@ -17,13 +18,7 @@ public class Book {
     private String description;
     private BigDecimal price;
     private Long categoryId;
-    private LocalDateTime recordCreationDate;
 
-    @PrePersist
-    void init() {
-        if (recordCreationDate == null)
-            recordCreationDate = LocalDateTime.now();
-    }
 
     public Long getId() {
         return id;
@@ -61,8 +56,21 @@ public class Book {
         this.categoryId = categoryId;
     }
 
-    public LocalDateTime getRecordCreationDate() {
-        return recordCreationDate;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(id, book.id) &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(description, book.description) &&
+                Objects.equals(price, book.price) &&
+                Objects.equals(categoryId, book.categoryId);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, price, categoryId);
+    }
 }
