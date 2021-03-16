@@ -1,5 +1,6 @@
 package zw.co.malvern.api.create.book;
 
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ public class BookResource {
     }
 
     @PostMapping("create")
+    @ApiOperation(value = "create book", response = BasicResponse.class)
     public ResponseEntity<BasicResponse> createNewBook(@RequestBody BookRequest bookRequest) {
         return ResponseEntity.ok(bookService.createNewBook(bookRequest));
     }

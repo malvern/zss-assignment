@@ -1,5 +1,6 @@
 package zw.co.malvern.api.retreive;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import zw.co.malvern.business.retrieve.RetrieveBookService;
@@ -16,6 +17,8 @@ public class RetrieveBookResource {
     }
 
     @GetMapping(value = "all", params = {"page", "size"})
+    @ApiOperation(value = "view all books", response = BooksResponse.class)
+
     public ResponseEntity<BooksResponse> viewAllAvailableBooks(@RequestParam(value = "page", defaultValue = "0") int page,
                                                                @RequestParam(value = "size", defaultValue = "10") int size,
                                                                @RequestParam(value = "sortBy", defaultValue = "id") String sortBy
@@ -25,6 +28,7 @@ public class RetrieveBookResource {
     }
 
     @GetMapping(value = "category/{category}", params = {"page", "size"})
+    @ApiOperation(value = "view books by category", response = BooksResponse.class)
     public ResponseEntity<BooksResponse> viewBooksByCategory(@PathVariable String category,
                                                              @RequestParam(value = "page", defaultValue = "0") int page,
                                                              @RequestParam(value = "size", defaultValue = "10") int size) {

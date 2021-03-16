@@ -1,5 +1,6 @@
 package zw.co.malvern.api.create.category;
 
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ public class CategoryResource {
     }
 
     @PostMapping("create")
+    @ApiOperation(value = "create category", response = BasicResponse.class)
     public ResponseEntity<BasicResponse> createBookCategory(@RequestBody CategoryRequest categoryRequest) {
         return ResponseEntity.ok(categoryService.createBookCategory(categoryRequest));
     }
