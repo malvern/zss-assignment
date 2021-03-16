@@ -1,4 +1,4 @@
-package zw.co.malvern.api.book.create;
+package zw.co.malvern.api.create.book;
 
 import zw.co.malvern.utils.request.CategoryRequest;
 

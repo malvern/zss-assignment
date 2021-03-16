@@ -11,8 +11,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
-import zw.co.malvern.api.book.create.BookRequest;
-import zw.co.malvern.api.book.create.BookResource;
+import zw.co.malvern.api.create.book.BookRequest;
+import zw.co.malvern.api.create.book.BookResource;
 import zw.co.malvern.business.book.BookService;
 import zw.co.malvern.utils.exceptions.BookException;
 import zw.co.malvern.utils.response.BasicResponse;
@@ -24,7 +24,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static zw.co.malvern.utils.TestData.localPort;
 import static zw.co.malvern.utils.TestData.newBookRequest;
 
 @WebMvcTest(controllers = {BookResource.class})
@@ -45,7 +44,7 @@ class BookResourceControllerUnitTest {
     @Test
     @DisplayName("creating new book")
     void givenNewRequest_whenCreatingNewBook_shouldReturnSuccessResponse() throws Exception {
-        final String url = "http://localhost:" + localPort + "/api/book/create";
+        final String url = "/api/book/create";
         final BookRequest newBookRequest = newBookRequest();
         final BasicResponse basicResponse = new BasicResponse();
         basicResponse.setSuccess(true);
@@ -59,7 +58,7 @@ class BookResourceControllerUnitTest {
     @Test
     @DisplayName("attempting to create new book with invalid parameters")
     void givenInvalidRequest_whenCreatingNewBook_shouldReturnFailedResponse() throws Exception {
-        final String url = "http://localhost:" + localPort + "/api/book/create";
+        final String url = "/api/book/create";
         final BookRequest newBookRequest = newBookRequest();
         newBookRequest.setTitle(null);
         final ErrorResponse errorResponse = new ErrorResponse();
@@ -76,7 +75,7 @@ class BookResourceControllerUnitTest {
     @Test
     @DisplayName("when database service is not available")
     void givenInvalidRequest_whenCreatingNewBook_shouldReturnFailedResponseAfterThrowingInternalError() throws Exception {
-        final String url = "http://localhost:" + localPort + "/api/book/create";
+        final String url = "/api/book/create";
         final BookRequest newBookRequest = newBookRequest();
         newBookRequest.setTitle(null);
         final ErrorResponse errorResponse = new ErrorResponse();

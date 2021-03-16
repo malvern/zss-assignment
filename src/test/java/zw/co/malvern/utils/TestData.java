@@ -1,6 +1,6 @@
 package zw.co.malvern.utils;
 
-import zw.co.malvern.api.book.create.BookRequest;
+import zw.co.malvern.api.create.book.BookRequest;
 import zw.co.malvern.domain.Book;
 import zw.co.malvern.domain.Category;
 import zw.co.malvern.utils.request.CategoryRequest;
@@ -41,5 +41,11 @@ public class TestData {
         category.setId(1L);
         category.setTitle("educational");
         return category;
+    }
+
+    public static CategoryRequest categoryRequest() {
+        final CategoryRequest categoryRequest = new CategoryRequest();
+        categoryRequest.setTitle("educational");
+        return categoryRequest;
     }
 }

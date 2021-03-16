@@ -1,6 +1,6 @@
 package zw.co.malvern.business.book;
 
-import zw.co.malvern.api.book.create.BookRequest;
+import zw.co.malvern.api.create.book.BookRequest;
 import zw.co.malvern.domain.Book;
 import zw.co.malvern.domain.Category;
 import zw.co.malvern.repository.BookRepository;
@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
 
     private Category getBookCategory(BookRequest bookRequest) {
         final Optional<Category> category = categoryRepository
-                .findByTitle(bookRequest.getCategoryRequest().getTitle());
+                .findByTitleIgnoreCase(bookRequest.getCategoryRequest().getTitle());
         if (!category.isPresent())
             throw new BookException("Book Category is not defined.Please define book category first");
         return category.get();

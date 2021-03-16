@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import zw.co.malvern.api.book.create.BookRequest;
+import zw.co.malvern.api.create.book.BookRequest;
 import zw.co.malvern.business.book.BookService;
 import zw.co.malvern.business.book.BookServiceImpl;
 import zw.co.malvern.domain.Book;
@@ -49,12 +49,12 @@ class BookServiceUnitTest {
         final BookRequest newBookRequest = newBookRequest();
         final Category category = bookCategory();
         given(bookRepository.save(any(Book.class))).willReturn(savedBook());
-        given(categoryRepository.findByTitle(anyString())).willReturn(Optional.of(category));
+        given(categoryRepository.findByTitleIgnoreCase(anyString())).willReturn(Optional.of(category));
         final BasicResponse response = bookService.createNewBook(newBookRequest);
         verify(bookRepository).save(bookArgumentCaptor.capture());
         final Book savedBook = bookArgumentCaptor.getValue();
         verify(bookRepository, times(1)).save(any(Book.class));
-        verify(categoryRepository, times(1)).findByTitle(anyString());
+        verify(categoryRepository, times(1)).findByTitleIgnoreCase(anyString());
         assertNotNull(savedBook);
         assertThat(response).isNotNull();
         assertThat(response.isSuccess()).as("success").isEqualTo(true);
@@ -73,10 +73,10 @@ class BookServiceUnitTest {
         final BookRequest newBookRequest = newBookRequest();
         final Category category = bookCategory();
         given(bookRepository.save(any(Book.class))).willReturn(savedBook());
-        given(categoryRepository.findByTitle(anyString())).willReturn(Optional.of(category));
+        given(categoryRepository.findByTitleIgnoreCase(anyString())).willReturn(Optional.of(category));
         final BasicResponse response = bookService.createNewBook(newBookRequest);
         verify(bookRepository, times(1)).save(any(Book.class));
-        verify(categoryRepository, times(1)).findByTitle(anyString());
+        verify(categoryRepository, times(1)).findByTitleIgnoreCase(anyString());
         assertThat(response).isNotNull();
         assertThat(response.getNarrative()).as("narrative")
                 .isEqualTo("New Book with title " + newBookRequest.getTitle() + " has been successfully created");
@@ -123,11 +123,11 @@ class BookServiceUnitTest {
     @DisplayName("attempting to create book with non existence category")
     void givenNewBookRequest_whenCreatingNewBookWithNonExistenceCategory_shouldReturnThrowBookException() {
         final BookRequest newBookRequest = newBookRequest();
-        given(categoryRepository.findByTitle(anyString())).willReturn(Optional.empty());
+        given(categoryRepository.findByTitleIgnoreCase(anyString())).willReturn(Optional.empty());
         assertThatThrownBy(() -> bookService.createNewBook(newBookRequest))
                 .isInstanceOf(BookException.class)
                 .hasMessage("Book Category is not defined.Please define book category first");
-        verify(categoryRepository, times(1)).findByTitle(anyString());
+        verify(categoryRepository, times(1)).findByTitleIgnoreCase(anyString());
 
     }
 
