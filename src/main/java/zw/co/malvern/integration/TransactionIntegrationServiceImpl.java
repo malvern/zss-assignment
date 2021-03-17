@@ -19,7 +19,6 @@ public class TransactionIntegrationServiceImpl implements TransactionIntegration
 
     @Override
     public TransactionResponse purchaseBook(TransactionRequest transactionRequest) {
-
         final ResponseEntity<TransactionResponse> response = restTemplate.exchange(url, HttpMethod.POST,
                 new HttpEntity<>(transactionRequest, requestHeaders()), TransactionResponse.class);
         return response.getBody();
