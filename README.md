@@ -37,6 +37,9 @@ Clone this github repo here
   - Adding Docker containers(test container) so that all integrations tests can run.(Book and Category api integration tests have been disabled).
  
   - Finish Transacction integration.(integration test for PurchaseBook.(Only 1 integration test was done).
+      - adding validators
+      - add options to allow users to purchase particular book(purchaseRequest object)
+      -  check if selected book is in stock
   
   - implement security using spring security.
 
